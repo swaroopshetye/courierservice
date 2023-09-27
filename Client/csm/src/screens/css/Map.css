@@ -1,0 +1,12 @@
+
+.Map {
+    height: 55vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+  }
+  
+  .map-container {
+    height: 100%;
+    width: 60%;
+  }

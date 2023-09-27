@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Courier Service</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Company Logo" srcset="logo.png 1x, logo@2x.png 2x">
+  </header>
+  
+  <section class="hero">
+    <h1>Welcome to our Courier Service</h1>
+    <img src="hero-image.png" alt="Hero Image" srcset="hero-image.png 1x, hero-image@2x.png 2x">
+    <a href="#" class="btn">Get Started</a>
+  </section>
+  
+  <section class="features">
+    <h2>Key Features</h2>
+    <ul>
+      <li><img src="feature-icon1.png" alt="Feature 1 Icon" srcset="feature-icon1.png 1x, feature-icon1@2x.png 2x"> Fast and Reliable Delivery</li>
+      <li><img src="feature-icon2.png" alt="Feature 2 Icon" srcset="feature-icon2.png 1x, feature-icon2@2x.png 2x"> Real-time Tracking</li>
+      <li><img src="feature-icon3.png" alt="Feature 3 Icon" srcset="feature-icon3.png 1x, feature-icon3@2x.png 2x"> Secure Packaging</li>
+    </ul>
+  </section>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Fast and Reliable Courier Service</h1>
+      <p>Ship your packages with ease and track their delivery status.</p>
+      <a href="#booking" class="btn">Get Started</a>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2>Key Features</h2>
+    <div class="feature">
+      <img src="feature1.png" alt="Feature 1">
+      <h3>Real-time Tracking</h3>
+      <p>Track your packages in real-time and know their exact location.</p>
+    </div>
+    <div class="feature">
+      <img src="feature2.png" alt="Feature 2">
+      <h3>Secure Delivery</h3>
+      <p>Ensure secure and reliable delivery of your packages.</p>
+    </div>
+    <div class="feature">
+      <img src="feature3.png" alt="Feature 3">
+      <h3>Easy Booking</h3>
+      <p>Book your courier service with just a few simple steps.</p>
+    </div>
+  </section>
+
+  <section id="tracking">
+    <h2>Track Your Packages</h2>
+    <p>Enter your tracking number below to get real-time updates on your package status.</p>
+    <form>
+      <input type="text" placeholder="Enter Tracking Number">
+      <button type="submit">Track</button>
+    </form>
+  </section>
+
+  <section id="booking">
+    <h2>Book Your Courier</h2>
+    <p>Fill in the details below to book your courier service.</p>
+    <form>
+      <input type="text" placeholder="Name">
+      <input type="text" placeholder="Email">
+      <input type="text" placeholder="Phone">
+      <textarea placeholder="Address"></textarea>
+      <button type="submit">Book Now</button>
+    </form>
+  </section>
+
+  <section id="support">
+    <h2>Customer Support</h2>
+    <p>For any inquiries or assistance, please contact our customer support team.</p>
+    <p>Phone: 123-456-7890</p>
+    <p>Email: support@courierservice.com</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Courier Service. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+

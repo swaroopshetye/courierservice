@@ -1,0 +1,6 @@
+INSERT INTO [dbo].[Package_Price] ([package_type], [package_price]) VALUES (N'Large Delicate', CAST(120 AS Decimal(18, 0)))
+INSERT INTO [dbo].[Package_Price] ([package_type], [package_price]) VALUES (N'Large Non Delicate', CAST(70 AS Decimal(18, 0)))
+INSERT INTO [dbo].[Package_Price] ([package_type], [package_price]) VALUES (N'Medium Delicate', CAST(100 AS Decimal(18, 0)))
+INSERT INTO [dbo].[Package_Price] ([package_type], [package_price]) VALUES (N'Medium Non Delicate', CAST(50 AS Decimal(18, 0)))
+INSERT INTO [dbo].[Package_Price] ([package_type], [package_price]) VALUES (N'Small Delicate', CAST(80 AS Decimal(18, 0)))
+INSERT INTO [dbo].[Package_Price] ([package_type], [package_price]) VALUES (N'Small Non Delicate', CAST(30 AS Decimal(18, 0)))

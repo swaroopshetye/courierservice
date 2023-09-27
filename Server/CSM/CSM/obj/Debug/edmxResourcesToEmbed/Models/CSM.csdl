@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CSMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Complaint">
+    <Key>
+      <PropertyRef Name="complaint_id" />
+    </Key>
+    <Property Name="complaint_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="complaint1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="placed_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="resolved_date" Type="DateTime" Precision="0" />
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <Property Name="customer_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.Fk_Complaint_To_Order" FromRole="Complaint" ToRole="Order" />
+    <NavigationProperty Name="User_Info" Relationship="Self.Fk_Complaint_To_User_Info" FromRole="Complaint" ToRole="User_Info" />
+    <Property Name="role_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="CSMModel.Fk_Complaint_To_Role" FromRole="Complaint" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Delivery_Personnel">
+    <Key>
+      <PropertyRef Name="personnel_id" />
+    </Key>
+    <Property Name="personnel_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Delivery_Personnel_To_Delivery_Personnel" FromRole="Delivery_Personnel" ToRole="Order" />
+    <NavigationProperty Name="User_Info" Relationship="Self.FK_Delivery_Personnel_To_User_Info" FromRole="Delivery_Personnel" ToRole="User_Info" />
+  </EntityType>
+  <EntityType Name="Dispatcher">
+    <Key>
+      <PropertyRef Name="dispatcher_id" />
+    </Key>
+    <Property Name="dispatcher_id" Type="Int32" Nullable="false" />
+    <Property Name="hub_location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="User_Info" Relationship="Self.Fk_Dispatcher_TO_User_Info" FromRole="Dispatcher" ToRole="User_Info" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <Property Name="receiver_mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="receiver_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="package_count" Type="Int32" Nullable="false" />
+    <Property Name="amount" Type="Single" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="customer_id" Type="Int32" Nullable="false" />
+    <Property Name="personnel_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Complaints" Relationship="Self.Fk_Complaint_To_Order" FromRole="Order" ToRole="Complaint" />
+    <NavigationProperty Name="Delivery_Personnel" Relationship="Self.FK_Delivery_Personnel_To_Delivery_Personnel" FromRole="Order" ToRole="Delivery_Personnel" />
+    <NavigationProperty Name="User_Info" Relationship="Self.FK_Order_To_User_Info" FromRole="Order" ToRole="User_Info" />
+    <NavigationProperty Name="Trackings" Relationship="Self.FK_Tracking_To_Order" FromRole="Order" ToRole="Tracking" />
+    <Property Name="receiver_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="receiver_email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="package_type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Package_Price">
+    <Key>
+      <PropertyRef Name="package_type" />
+    </Key>
+    <Property Name="package_type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="package_price1" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="role_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="User_Info" Relationship="Self.FK_USER_TO_ROLE" FromRole="Role" ToRole="User_Info" />
+    <NavigationProperty Name="Complaints" Relationship="CSMModel.Fk_Complaint_To_Role" FromRole="Role" ToRole="Complaint" />
+  </EntityType>
+  <EntityType Name="Tracking">
+    <Key>
+      <PropertyRef Name="tracking_id" />
+    </Key>
+    <Property Name="tracking_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="departed_from" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="reached_at" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="destination" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_Tracking_To_Order" FromRole="Tracking" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="User_Info">
+    <Key>
+      <PropertyRef Name="user_Id" />
+    </Key>
+    <Property Name="user_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="role_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Complaints" Relationship="Self.Fk_Complaint_To_User_Info" FromRole="User_Info" ToRole="Complaint" />
+    <NavigationProperty Name="Delivery_Personnel" Relationship="Self.FK_Delivery_Personnel_To_User_Info" FromRole="User_Info" ToRole="Delivery_Personnel" />
+    <NavigationProperty Name="Dispatcher" Relationship="Self.Fk_Dispatcher_TO_User_Info" FromRole="User_Info" ToRole="Dispatcher" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_To_User_Info" FromRole="User_Info" ToRole="Order" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_USER_TO_ROLE" FromRole="User_Info" ToRole="Role" />
+    <Property Name="status" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="token" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="Fk_Complaint_To_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="Complaint" Type="Self.Complaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="Complaint">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Complaint_To_User_Info">
+    <End Role="User_Info" Type="Self.User_Info" Multiplicity="1" />
+    <End Role="Complaint" Type="Self.Complaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Info">
+        <PropertyRef Name="user_Id" />
+      </Principal>
+      <Dependent Role="Complaint">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Delivery_Personnel_To_Delivery_Personnel">
+    <End Role="Delivery_Personnel" Type="Self.Delivery_Personnel" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Delivery_Personnel">
+        <PropertyRef Name="personnel_id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="personnel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Delivery_Personnel_To_User_Info">
+    <End Role="User_Info" Type="Self.User_Info" Multiplicity="1" />
+    <End Role="Delivery_Personnel" Type="Self.Delivery_Personnel" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User_Info">
+        <PropertyRef Name="user_Id" />
+      </Principal>
+      <Dependent Role="Delivery_Personnel">
+        <PropertyRef Name="personnel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Dispatcher_TO_User_Info">
+    <End Role="User_Info" Type="Self.User_Info" Multiplicity="1" />
+    <End Role="Dispatcher" Type="Self.Dispatcher" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User_Info">
+        <PropertyRef Name="user_Id" />
+      </Principal>
+      <Dependent Role="Dispatcher">
+        <PropertyRef Name="dispatcher_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_To_User_Info">
+    <End Role="User_Info" Type="Self.User_Info" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Info">
+        <PropertyRef Name="user_Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tracking_To_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="Tracking" Type="Self.Tracking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="Tracking">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_TO_ROLE">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User_Info" Type="Self.User_Info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="User_Info">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CSMEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Complaints" EntityType="Self.Complaint" />
+    <EntitySet Name="Delivery_Personnel" EntityType="Self.Delivery_Personnel" />
+    <EntitySet Name="Dispatchers" EntityType="Self.Dispatcher" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Package_Price" EntityType="Self.Package_Price" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Trackings" EntityType="Self.Tracking" />
+    <EntitySet Name="User_Info" EntityType="Self.User_Info" />
+    <AssociationSet Name="Fk_Complaint_To_Order" Association="Self.Fk_Complaint_To_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Complaint" EntitySet="Complaints" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Complaint_To_User_Info" Association="Self.Fk_Complaint_To_User_Info">
+      <End Role="User_Info" EntitySet="User_Info" />
+      <End Role="Complaint" EntitySet="Complaints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Delivery_Personnel_To_Delivery_Personnel" Association="Self.FK_Delivery_Personnel_To_Delivery_Personnel">
+      <End Role="Delivery_Personnel" EntitySet="Delivery_Personnel" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Delivery_Personnel_To_User_Info" Association="Self.FK_Delivery_Personnel_To_User_Info">
+      <End Role="User_Info" EntitySet="User_Info" />
+      <End Role="Delivery_Personnel" EntitySet="Delivery_Personnel" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Dispatcher_TO_User_Info" Association="Self.Fk_Dispatcher_TO_User_Info">
+      <End Role="User_Info" EntitySet="User_Info" />
+      <End Role="Dispatcher" EntitySet="Dispatchers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_To_User_Info" Association="Self.FK_Order_To_User_Info">
+      <End Role="User_Info" EntitySet="User_Info" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tracking_To_Order" Association="Self.FK_Tracking_To_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Tracking" EntitySet="Trackings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_TO_ROLE" Association="Self.FK_USER_TO_ROLE">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User_Info" EntitySet="User_Info" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Complaint_To_Role" Association="CSMModel.Fk_Complaint_To_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="Complaint" EntitySet="Complaints" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="Fk_Complaint_To_Role">
+    <End Type="CSMModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="CSMModel.Complaint" Role="Complaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="Complaint">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

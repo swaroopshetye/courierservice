@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CSMModelStoreContainer" CdmEntityContainer="CSMEntities1">
+    <EntitySetMapping Name="Complaints">
+      <EntityTypeMapping TypeName="CSMModel.Complaint">
+        <MappingFragment StoreEntitySet="Complaint">
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="complaint_id" ColumnName="complaint_id" />
+          <ScalarProperty Name="complaint1" ColumnName="complaint" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="placed_date" ColumnName="placed_date" />
+          <ScalarProperty Name="resolved_date" ColumnName="resolved_date" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Delivery_Personnel">
+      <EntityTypeMapping TypeName="CSMModel.Delivery_Personnel">
+        <MappingFragment StoreEntitySet="Delivery_Personnel">
+          <ScalarProperty Name="personnel_id" ColumnName="personnel_id" />
+          <ScalarProperty Name="location" ColumnName="location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dispatchers">
+      <EntityTypeMapping TypeName="CSMModel.Dispatcher">
+        <MappingFragment StoreEntitySet="Dispatcher">
+          <ScalarProperty Name="dispatcher_id" ColumnName="dispatcher_id" />
+          <ScalarProperty Name="hub_location" ColumnName="hub_location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="CSMModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="package_type" ColumnName="package_type" />
+          <ScalarProperty Name="receiver_email" ColumnName="receiver_email" />
+          <ScalarProperty Name="receiver_name" ColumnName="receiver_name" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="receiver_mobile" ColumnName="receiver_mobile" />
+          <ScalarProperty Name="receiver_address" ColumnName="receiver_address" />
+          <ScalarProperty Name="package_count" ColumnName="package_count" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="personnel_id" ColumnName="personnel_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Package_Price">
+      <EntityTypeMapping TypeName="CSMModel.Package_Price">
+        <MappingFragment StoreEntitySet="Package_Price">
+          <ScalarProperty Name="package_type" ColumnName="package_type" />
+          <ScalarProperty Name="package_price1" ColumnName="package_price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="CSMModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trackings">
+      <EntityTypeMapping TypeName="CSMModel.Tracking">
+        <MappingFragment StoreEntitySet="Tracking">
+          <ScalarProperty Name="tracking_id" ColumnName="tracking_id" />
+          <ScalarProperty Name="departed_from" ColumnName="departed_from" />
+          <ScalarProperty Name="reached_at" ColumnName="reached_at" />
+          <ScalarProperty Name="destination" ColumnName="destination" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Info">
+      <EntityTypeMapping TypeName="CSMModel.User_Info">
+        <MappingFragment StoreEntitySet="User_Info">
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,29 @@
+    Customer:
+        One-to-Many relationship with Order (One customer can have multiple orders)
+        One-to-Many relationship with Feedback (One customer can provide multiple feedback)
+
+    Order:
+        One-to-One relationship with Payment (One order has one payment)
+        One-to-Many relationship with OrderTracking (One order can have multiple tracking records)
+        Many-to-One relationship with Customer (Many orders belong to one customer)
+        Many-to-One relationship with CourierDeliveryPersonnel (Many orders can be assigned to one courier delivery personnel)
+
+    CourierDeliveryPersonnel:
+        One-to-Many relationship with Order (One courier delivery personnel can handle multiple orders)
+
+    OrderTracking:
+        Many-to-One relationship with Order (Many tracking records belong to one order)
+
+    Package:
+        One-to-One relationship with Order (One package is associated with one order)
+
+    Payment:
+        One-to-One relationship with Order (One payment is associated with one order)
+
+    Feedback:
+        Many-to-One relationship with Order (Many feedbacks belong to one order)
+        Many-to-One relationship with Customer (Many feedbacks are given by one customer)
+
+    Admin:
+        Many-to-Many relationship with Role (An admin can have multiple roles)
+        Junction table AdminRole connects Admin and Role tables
